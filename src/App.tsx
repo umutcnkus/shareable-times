@@ -1,24 +1,17 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Stopwatch from './components/stopwatch/Stopwatch';
 
 function App() {
+  const startTime = new Date(2021, 4, 28, 20, 30, 0);
+  const now = new Date();
+  const difference =  now.getTime() - startTime.getTime();
+  const offsetTimestamp = new Date();
+  offsetTimestamp.setSeconds(offsetTimestamp.getSeconds() + difference/1000);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Stopwatch offsetTimestamp={offsetTimestamp}></Stopwatch>
     </div>
   );
 }

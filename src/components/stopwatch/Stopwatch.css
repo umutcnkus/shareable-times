@@ -4,4 +4,12 @@
     font-family: 'Source Code Pro', monospace;
     border-bottom: 5px solid #e53170;
     padding: 50px;
+    max-width: 75%;
 }
+
+@media screen and (max-width: 600px) {
+    .watch-container {
+        font-size: 24px;
+        padding: 20px;
+    }
+  }

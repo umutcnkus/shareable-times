@@ -1,7 +1,6 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
-import Stopwatch from './components/stopwatch/Stopwatch';
+import Selection from './components/selection/Selection';
 
 function App() {
   const startTime = new Date(2021, 4, 28, 20, 30, 0);
@@ -11,7 +10,7 @@ function App() {
   offsetTimestamp.setSeconds(offsetTimestamp.getSeconds() + difference/1000);
   return (
     <div className="App">
-      <Stopwatch offsetTimestamp={offsetTimestamp}></Stopwatch>
+      <Selection></Selection>
     </div>
   );
 }

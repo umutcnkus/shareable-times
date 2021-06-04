@@ -1,71 +1,82 @@
 .selection-container {
-  display: flex;
+    display: flex;
+    transition: 0.5s ease-in-out;
+}
+
+.selection-container.escelated {
+    transform: translateY(-10rem);
 }
 
 .option-container {
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  margin: 0 5px;
-  transition: 0.5s ease-in;
-  width: 300px;
-  height: 300px;
-  box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    margin: 0 5px;
+    transition: 0.5s ease-in;
+    width: 300px;
+    height: 300px;
+    box-sizing: border-box;
 }
 
-.option-container:hover > .option-icon {
-  font-size: 8rem;
-  border: 5px solid #fffffe;
-  width: 200px;
-  height: 200px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.option-container:hover > .option-icon,
+.option-selected > .option-icon {
+    font-size: 8rem;
+    border: 5px solid #fffffe;
+    width: 200px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.option-container:hover > .option-label {
-  opacity: 1;
+.option-container:hover > .option-label,
+.option-selected > .option-label {
+    opacity: 1;
 }
 
 .option-icon {
-  color: #ff8906;
-  font-size: 4rem;
-  transition: 0.4s ease-in-out;
+    color: #ff8906;
+    font-size: 4rem;
+    transition: 0.4s ease-in-out;
 }
 
 .option-label {
-  color: #f25f4c;
-  font-size: 1.5rem;
-  padding: 0;
-  margin: 10px 0;
-  text-align: center;
-  opacity: 0;
-  transition: 1s ease-in;
+    color: #f25f4c;
+    font-size: 1.5rem;
+    padding: 0;
+    margin: 10px 0;
+    text-align: center;
+    opacity: 0;
+    transition: 1s ease-in;
 }
 
 @media screen and (max-width: 600px) {
-  .selection-container {
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    justify-content: space-between;
-  }
+    .selection-container {
+        flex-direction: column;
+        height: 100%;
+        width: 100%;
+        justify-content: space-between;
+    }
 
-  .option-container {
-    width: 100%;
-    margin: 0;
-  }
+    .option-container {
+        width: 100%;
+        margin: 0;
+    }
 
-  .option-container:hover > .option-icon {
-    font-size: 4rem;
-    width: 100px;
-    height: 100px;
-  }
+    .option-container:hover > .option-icon {
+        font-size: 4rem;
+        width: 100px;
+        height: 100px;
+    }
 
-  .option-label {
-      opacity: 1;
-      font-size: 1rem;
-  }
+    .option-label {
+        opacity: 1;
+        font-size: 1rem;
+    }
+
+    .selection-container.escelated {
+        transform: none;
+    }
 }

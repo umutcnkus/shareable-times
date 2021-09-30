@@ -1,15 +1,15 @@
 import React from 'react';
-import './Stopwatch.css';
-import { useStopwatch } from 'react-timer-hook';
+import './Timer.css';
+import { useTimer } from 'react-timer-hook';
 import {
   useParams
 } from "react-router-dom";
 
-function Stopwatch() {
-    const { start } = useParams();
-    const startTime = new Date(parseInt(start));
+function Timer() {
+    const { end } = useParams();
+    const endTime = new Date(parseInt(end));
     const now = new Date();
-    const difference =  now.getTime() - startTime.getTime();
+    const difference =  now.getTime() - endTime.getTime();
     const offsetTimestamp = new Date();
     offsetTimestamp.setSeconds(offsetTimestamp.getSeconds() + difference/1000);
     const {
@@ -17,9 +17,8 @@ function Stopwatch() {
         minutes,
         hours,
         days,
-      } = useStopwatch({ autoStart: true , offsetTimestamp: offsetTimestamp});
-    
-    
+        start
+      } = useTimer({ autoStart: true, expiryTimestamp: offsetTimestamp});
       return (
         <div className="watch-container">
            {days} : {hours} : {minutes} : {seconds}
@@ -27,4 +26,4 @@ function Stopwatch() {
       );
 }
 
-export default Stopwatch;
+export default Timer;

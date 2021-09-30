@@ -1,9 +1,16 @@
+.main-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
 .selection-container {
     display: flex;
     transition: 0.5s ease-in-out;
 }
 
-.selection-container.escelated {
+.escelated {
     transform: translateY(-10rem);
 }
 
@@ -40,6 +47,7 @@
     color: #ff8906;
     font-size: 4rem;
     transition: 0.4s ease-in-out;
+    cursor: pointer;
 }
 
 .option-label {
@@ -50,6 +58,10 @@
     text-align: center;
     opacity: 0;
     transition: 1s ease-in;
+}
+
+.setter-container {
+    height: 50px;
 }
 
 @media screen and (max-width: 600px) {
@@ -76,7 +88,7 @@
         font-size: 1rem;
     }
 
-    .selection-container.escelated {
+    .escelated {
         transform: none;
     }
 }

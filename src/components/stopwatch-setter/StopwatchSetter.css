@@ -1,0 +1,45 @@
+.controls-container {
+    display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 20px;
+}
+
+.date-time-input {
+	background: none;
+	border: none;
+	color: #ff8906;
+	font-size: 18px;
+	border-bottom: 2px solid white;
+	margin-right: 10px;
+	font-weight: bolder;
+	width: 25px;
+	text-align: center;
+}
+
+span.date-time-input{
+	border: none;
+}
+
+.controls-container  .option-icon {
+	font-size: 8rem;
+}
+
+.input-container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 28rem;
+	height: 8rem;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}

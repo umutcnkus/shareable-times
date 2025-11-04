@@ -1,3 +1,10 @@
+.watch-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
 .watch-container{
     color: #ff8906;
     font-size: 64px;
@@ -6,9 +13,42 @@
     padding: 50px;
 }
 
+.copy-button {
+    background: linear-gradient(to right, #e53170 0%, #ff8906 100%);
+    color: white;
+    border: none;
+    padding: 15px 30px;
+    font-size: 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-weight: 500;
+}
+
+.copy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(229, 49, 112, 0.4);
+}
+
+.copy-button:active {
+    transform: translateY(0);
+}
+
+.copy-button i {
+    font-size: 20px;
+}
+
 @media screen and (max-width: 600px) {
     .watch-container {
         font-size: 24px;
         padding: 20px;
+    }
+
+    .copy-button {
+        padding: 12px 24px;
+        font-size: 16px;
     }
   }

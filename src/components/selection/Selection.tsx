@@ -18,15 +18,16 @@ function Selection() {
     {
       name: SelectionOptions.Timer,
       icon: 'bx bx-timer'
-    }, 
-    {
-      name: SelectionOptions.Alarm,
-      icon: 'bx bx-alarm-exclamation'
-    }, 
+    },
+    // Alarm feature not yet implemented - coming soon!
+    // {
+    //   name: SelectionOptions.Alarm,
+    //   icon: 'bx bx-alarm-exclamation'
+    // },
     {
       name: SelectionOptions.Stopwatch,
       icon: 'bx bx-stopwatch'
-    } 
+    }
 ];
 
   const handleClick = (i, val) => {

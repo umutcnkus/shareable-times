@@ -4,8 +4,7 @@ import Selection from './components/selection/Selection';
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link
+  Route
 } from "react-router-dom";
 import Stopwatch from './components/stopwatch/Stopwatch';
 import Timer from './components/timer/Timer';
@@ -18,12 +17,12 @@ function App() {
   offsetTimestamp.setSeconds(offsetTimestamp.getSeconds() + difference/1000);
   return (
     <div className="App">
-      <Router baseName="/sharable-times">
+      <Router basename="/shareable-times">
         <Switch>
-        <Route path="/shareable-times/stopwatch/:start">
+        <Route path="/stopwatch/:start">
           <Stopwatch></Stopwatch>
         </Route>
-        <Route path="/shareable-times/timer/:end">
+        <Route path="/timer/:end">
           <Timer></Timer>
         </Route>
         <Route path="/">

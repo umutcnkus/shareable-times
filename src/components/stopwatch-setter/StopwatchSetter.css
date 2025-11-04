@@ -1,8 +1,10 @@
 .controls-container {
     display: flex;
+    flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	margin-top: 20px;
+	gap: 20px;
 }
 
 .date-time-input {
@@ -42,4 +44,53 @@ input::-webkit-inner-spin-button {
 /* Firefox */
 input[type=number] {
   -moz-appearance: textfield;
+}
+
+.preset-buttons {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.preset-btn {
+  background: rgba(255, 137, 6, 0.2);
+  border: 2px solid #ff8906;
+  color: #ff8906;
+  padding: 8px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.preset-btn:hover {
+  background: #ff8906;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 137, 6, 0.3);
+}
+
+.preset-btn:active {
+  transform: translateY(0);
+}
+
+.error-message {
+  color: #e53170;
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 20px;
+  background: rgba(229, 49, 112, 0.1);
+  border: 2px solid #e53170;
+  border-radius: 15px;
+  margin-top: 10px;
+  animation: shake 0.5s;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  10%, 30%, 50%, 70%, 90% { transform: translateX(-5px); }
+  20%, 40%, 60%, 80% { transform: translateX(5px); }
 }

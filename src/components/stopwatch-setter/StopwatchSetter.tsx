@@ -35,6 +35,7 @@ function StopwatchSetter({ type }) {
     const [hours, setHours] = useState(0);
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
+    const [label, setLabel] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const navigateFunc = useNavigate();
 
@@ -49,8 +50,9 @@ function StopwatchSetter({ type }) {
         setErrorMessage("");
         let now = new Date();
         let end = subSeconds(subMinutes(subHours(subDays(now, days), hours), minutes), seconds);
-        const location = type === SelectionOptions.Stopwatch ? "/stopwatch/" : "/timer/"
-        navigateFunc(location + end.getTime());
+        const location = type === SelectionOptions.Stopwatch ? "/stopwatch/" : "/timer/";
+        const labelParam = label ? `?label=${encodeURIComponent(label)}` : '';
+        navigateFunc(location + end.getTime() + labelParam);
     }
 
     const setPresetTime = (presetMinutes: number) => {
@@ -62,26 +64,38 @@ function StopwatchSetter({ type }) {
 
     return (
         <div className="controls-container">
-            {setterVisible && <div className="input-container">
-                <input defaultValue="0" name="days" className="date-time-input" min={0} max={99} onChange={(el) => setDays(enforceMinMax(el))} onKeyUp={enforceMinMax} placeholder="d" />
-                <span className="date-time-input">:</span>
+            {setterVisible && (
+                <>
+                    <div className="label-input-container">
+                        <input
+                            type="text"
+                            className="label-input"
+                            placeholder="Timer name (optional)"
+                            value={label}
+                            onChange={(e) => setLabel(e.target.value)}
+                            maxLength={50}
+                        />
+                    </div>
+                    <div className="input-container">
+                        <input defaultValue="0" name="days" className="date-time-input" min={0} max={99} onChange={(el) => setDays(enforceMinMax(el))} onKeyUp={enforceMinMax} placeholder="d" />
+                        <span className="date-time-input">:</span>
 
-                <input defaultValue="0" name="hours" className="date-time-input" min={0} max={23} onChange={(el) => setHours(enforceMinMax(el))} onKeyUp={enforceMinMax} placeholder="h" />
-                <span className="date-time-input">:</span>
+                        <input defaultValue="0" name="hours" className="date-time-input" min={0} max={23} onChange={(el) => setHours(enforceMinMax(el))} onKeyUp={enforceMinMax} placeholder="h" />
+                        <span className="date-time-input">:</span>
 
-                <input defaultValue="0" name="minutes" className="date-time-input" min={0} max={59} onChange={(el) => setMinutes(enforceMinMax(el))} onKeyUp={enforceMinMax} placeholder="m" />
-                <span className="date-time-input">:</span>
+                        <input defaultValue="0" name="minutes" className="date-time-input" min={0} max={59} onChange={(el) => setMinutes(enforceMinMax(el))} onKeyUp={enforceMinMax} placeholder="m" />
+                        <span className="date-time-input">:</span>
 
-                <input defaultValue="0" name="seconds" className="date-time-input" min={0} max={59} onChange={(el) => setSeconds(enforceMinMax(el))} onKeyUp={enforceMinMax} placeholder="s" />
-            </div>
-            }
-            {setterVisible && <div className="preset-buttons">
-                <button className="preset-btn" onClick={() => setPresetTime(5)}>5 min</button>
-                <button className="preset-btn" onClick={() => setPresetTime(15)}>15 min</button>
-                <button className="preset-btn" onClick={() => setPresetTime(30)}>30 min</button>
-                <button className="preset-btn" onClick={() => setPresetTime(60)}>1 hour</button>
-            </div>
-            }
+                        <input defaultValue="0" name="seconds" className="date-time-input" min={0} max={59} onChange={(el) => setSeconds(enforceMinMax(el))} onKeyUp={enforceMinMax} placeholder="s" />
+                    </div>
+                    <div className="preset-buttons">
+                        <button className="preset-btn" onClick={() => setPresetTime(5)}>5 min</button>
+                        <button className="preset-btn" onClick={() => setPresetTime(15)}>15 min</button>
+                        <button className="preset-btn" onClick={() => setPresetTime(30)}>30 min</button>
+                        <button className="preset-btn" onClick={() => setPresetTime(60)}>1 hour</button>
+                    </div>
+                </>
+            )}
             { !setterVisible && <i className="option-icon bx bx-rewind" onClick={() => setSetterVisible(true)}></i>
             }
             <i onClick={() =>navigate(type)} className="option-icon bx bx-play"></i>

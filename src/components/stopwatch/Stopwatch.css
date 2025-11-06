@@ -186,6 +186,226 @@
     font-size: 1.25rem;
 }
 
+.shortcuts-hint {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: rgba(30, 41, 59, 0.8);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-muted);
+    padding: 0.625rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    font-family: var(--font-sans);
+    border-radius: var(--radius-full);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: var(--transition-base);
+    box-shadow: var(--shadow-md);
+    z-index: 10;
+}
+
+.shortcuts-hint:hover {
+    background: rgba(30, 41, 59, 0.95);
+    color: var(--text-primary);
+    border-color: var(--primary);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+}
+
+.shortcuts-hint i {
+    font-size: 1.125rem;
+}
+
+.timer-label {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    margin-bottom: 1rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 2px solid var(--primary);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+/* Modal Styles */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.modal-content {
+    background: var(--bg-secondary);
+    border: 2px solid rgba(99, 102, 241, 0.3);
+    border-radius: var(--radius-xl);
+    padding: 2.5rem;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: var(--shadow-xl);
+    position: relative;
+    animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(239, 68, 68, 0.1);
+    border: 2px solid var(--error);
+    color: var(--error);
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition-base);
+    font-size: 1.5rem;
+}
+
+.modal-close:hover {
+    background: var(--error);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.modal-content h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.qr-container {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem;
+    background: white;
+    border-radius: var(--radius-lg);
+    margin: 1rem auto;
+    width: fit-content;
+}
+
+.qr-hint {
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9375rem;
+    margin-top: 1rem;
+}
+
+/* Keyboard Shortcuts Modal */
+.shortcuts-modal {
+    max-width: 600px;
+}
+
+.shortcuts-list {
+    display: grid;
+    gap: 1rem;
+}
+
+.shortcut-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 0.875rem 1.25rem;
+    background: rgba(30, 41, 59, 0.5);
+    border-radius: var(--radius-lg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.shortcut-item kbd {
+    background: var(--gradient-primary);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: var(--radius-md);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    font-weight: 700;
+    min-width: 4rem;
+    text-align: center;
+    box-shadow: var(--shadow-sm);
+}
+
+.shortcut-item span {
+    color: var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+@media screen and (max-width: 768px) {
+    .shortcuts-hint {
+        top: 1rem;
+        right: 1rem;
+        padding: 0.5rem 1rem;
+        font-size: 0.8125rem;
+    }
+
+    .shortcuts-hint span {
+        display: none;
+    }
+
+    .timer-label {
+        font-size: 1.25rem;
+        padding: 0.625rem 1.25rem;
+    }
+
+    .modal-content {
+        padding: 2rem 1.5rem;
+    }
+
+    .qr-container svg {
+        width: 200px !important;
+        height: 200px !important;
+    }
+
+    .shortcut-item {
+        gap: 1rem;
+    }
+
+    .shortcut-item kbd {
+        min-width: 3rem;
+        font-size: 0.75rem;
+        padding: 0.375rem 0.75rem;
+    }
+
+    .shortcut-item span {
+        font-size: 0.9375rem;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .back-button {
         top: 1rem;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './StopwatchSetter.css';
-import moment from "moment"
-import { useHistory } from "react-router-dom";
+import { subDays, subHours, subMinutes, subSeconds } from 'date-fns';
+import { useNavigate } from "react-router-dom";
 import { SelectionOptions } from '../selection/Selection';
 
 
@@ -36,7 +36,7 @@ function StopwatchSetter({ type }) {
     const [minutes, setMinutes] = useState(0);
     const [seconds, setSeconds] = useState(0);
     const [errorMessage, setErrorMessage] = useState("");
-    let history = useHistory();
+    const navigateFunc = useNavigate();
 
     const navigate = (type: SelectionOptions) => {
         // Validate that at least some time is set
@@ -48,10 +48,9 @@ function StopwatchSetter({ type }) {
 
         setErrorMessage("");
         let now = new Date();
-        let start = moment(now);
-        let end = moment(start).subtract(days, "days").subtract(hours, "hours").subtract(minutes, "minutes").subtract(seconds, "seconds");
+        let end = subSeconds(subMinutes(subHours(subDays(now, days), hours), minutes), seconds);
         const location = type === SelectionOptions.Stopwatch ? "/stopwatch/" : "/timer/"
-        history.push(location + end.toDate().getTime());
+        navigateFunc(location + end.getTime());
     }
 
     const setPresetTime = (presetMinutes: number) => {

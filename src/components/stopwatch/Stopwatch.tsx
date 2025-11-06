@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import './Stopwatch.css';
 import { useStopwatch } from 'react-timer-hook';
 import {
-  useParams
+  useParams,
+  useNavigate
 } from "react-router-dom";
 
 function Stopwatch() {
-    const { start } = useParams();
+    const { start } = useParams<{ start: string }>();
+    const navigate = useNavigate();
     const [copySuccess, setCopySuccess] = useState(false);
-    const startTime = new Date(parseInt(start));
+    const startTime = new Date(parseInt(start || '0'));
     const now = new Date();
     const difference =  now.getTime() - startTime.getTime();
     const offsetTimestamp = new Date();
@@ -18,6 +20,9 @@ function Stopwatch() {
         minutes,
         hours,
         days,
+        isRunning,
+        pause,
+        start: startTimer
       } = useStopwatch({ autoStart: true , offsetTimestamp: offsetTimestamp});
 
     const copyToClipboard = () => {
@@ -29,15 +34,34 @@ function Stopwatch() {
       });
     };
 
+    const formatNumber = (num: number) => String(num).padStart(2, '0');
+
       return (
         <div className="watch-page">
-          <div className="watch-container">
-            {days} : {hours} : {minutes} : {seconds}
-          </div>
-          <button className="copy-button" onClick={copyToClipboard}>
-            <i className='bx bx-link-alt'></i>
-            {copySuccess ? 'Copied!' : 'Copy Link'}
+          <button className="back-button" onClick={() => navigate('/')}>
+            <i className='bx bx-home'></i>
+            <span>Home</span>
           </button>
+          <div className="watch-container">
+            {days > 0 && `${days} : `}{formatNumber(hours)} : {formatNumber(minutes)} : {formatNumber(seconds)}
+          </div>
+          <div className="control-buttons">
+            {isRunning ? (
+              <button className="control-btn pause-btn" onClick={pause}>
+                <i className='bx bx-pause'></i>
+                <span>Pause</span>
+              </button>
+            ) : (
+              <button className="control-btn" onClick={startTimer}>
+                <i className='bx bx-play'></i>
+                <span>Resume</span>
+              </button>
+            )}
+            <button className="copy-button" onClick={copyToClipboard}>
+              <i className='bx bx-link-alt'></i>
+              <span>{copySuccess ? 'Copied!' : 'Copy Link'}</span>
+            </button>
+          </div>
         </div>
       );
 }

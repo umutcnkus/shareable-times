@@ -3,15 +3,32 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    width: 100%;
+    max-width: 1200px;
+    z-index: 1;
 }
 
 .selection-container {
     display: flex;
-    transition: 0.5s ease-in-out;
+    gap: 2rem;
+    transition: var(--transition-slow);
+    animation: fadeInUp 0.8s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .escelated {
-    transform: translateY(-10rem);
+    transform: translateY(-8rem) scale(0.85);
+    opacity: 0.7;
 }
 
 .option-container {
@@ -20,75 +37,139 @@
     cursor: pointer;
     align-items: center;
     justify-content: center;
-    margin: 0 5px;
-    transition: 0.5s ease-in;
-    width: 300px;
-    height: 300px;
-    box-sizing: border-box;
+    padding: 2rem;
+    transition: var(--transition-base);
+    width: 280px;
+    height: 280px;
+    background: rgba(30, 41, 59, 0.5);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.option-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: var(--transition-base);
+    z-index: 0;
+}
+
+.option-container:hover::before,
+.option-selected::before {
+    opacity: 0.1;
+}
+
+.option-container:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    border-color: rgba(99, 102, 241, 0.5);
 }
 
 .option-container:hover > .option-icon,
 .option-selected > .option-icon {
-    font-size: 8rem;
-    border: 5px solid #fffffe;
-    width: 200px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    font-size: 6rem;
+    color: var(--primary-light);
+    transform: scale(1.1) rotate(5deg);
 }
 
 .option-container:hover > .option-label,
 .option-selected > .option-label {
     opacity: 1;
+    transform: translateY(0);
 }
 
 .option-icon {
-    color: #ff8906;
-    font-size: 4rem;
-    transition: 0.4s ease-in-out;
+    color: var(--primary);
+    font-size: 4.5rem;
+    transition: var(--transition-base);
     cursor: pointer;
+    z-index: 1;
+    filter: drop-shadow(0 4px 8px rgba(99, 102, 241, 0.3));
 }
 
 .option-label {
-    color: #f25f4c;
+    color: var(--text-primary);
     font-size: 1.5rem;
+    font-weight: 600;
     padding: 0;
-    margin: 10px 0;
+    margin: 1rem 0 0;
     text-align: center;
-    opacity: 0;
-    transition: 1s ease-in;
+    opacity: 0.8;
+    transform: translateY(10px);
+    transition: var(--transition-base);
+    z-index: 1;
+    letter-spacing: 0.5px;
 }
 
 .setter-container {
-    height: 50px;
+    min-height: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 768px) {
     .selection-container {
         flex-direction: column;
-        height: 100%;
+        gap: 1.5rem;
         width: 100%;
-        justify-content: space-between;
     }
 
     .option-container {
         width: 100%;
-        margin: 0;
+        max-width: 400px;
+        height: 200px;
+        flex-direction: row;
+        gap: 1.5rem;
     }
 
-    .option-container:hover > .option-icon {
-        font-size: 4rem;
-        width: 100px;
-        height: 100px;
+    .option-container:hover {
+        transform: translateY(-4px) scale(1.02);
+    }
+
+    .option-container:hover > .option-icon,
+    .option-selected > .option-icon {
+        font-size: 4.5rem;
+        transform: scale(1.05);
+    }
+
+    .option-icon {
+        font-size: 3.5rem;
     }
 
     .option-label {
         opacity: 1;
-        font-size: 1rem;
+        font-size: 1.25rem;
+        transform: none;
+        margin: 0;
     }
 
     .escelated {
-        transform: none;
+        transform: translateY(-6rem) scale(0.9);
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .option-container {
+        height: 160px;
+        padding: 1.5rem;
+    }
+
+    .option-icon {
+        font-size: 3rem;
+    }
+
+    .option-label {
+        font-size: 1.125rem;
     }
 }

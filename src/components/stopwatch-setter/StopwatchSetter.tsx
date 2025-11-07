@@ -41,23 +41,26 @@ function StopwatchSetter({ type }) {
     const navigateFunc = useNavigate();
 
     const navigate = (type: SelectionOptions) => {
-        // Validate that at least some time is set
-        if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
-            setErrorMessage("Please set a time value!");
-            setTimeout(() => setErrorMessage(""), 3000);
-            return;
-        }
-
         setErrorMessage("");
         let now = new Date();
         let timestamp;
 
         if (type === SelectionOptions.Stopwatch) {
             // For stopwatch: store the START time (past) so we can calculate elapsed
-            timestamp = subSeconds(subMinutes(subHours(subDays(now, days), hours), minutes), seconds);
+            // If all zeros, start from now
+            if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+                timestamp = now;
+            } else {
+                timestamp = subSeconds(subMinutes(subHours(subDays(now, days), hours), minutes), seconds);
+            }
         } else {
             // For timer: store the EXPIRY time (future) so everyone sees same countdown
-            timestamp = addSeconds(addMinutes(addHours(addDays(now, days), hours), minutes), seconds);
+            // If all zeros, set to now (will expire immediately)
+            if (days === 0 && hours === 0 && minutes === 0 && seconds === 0) {
+                timestamp = now;
+            } else {
+                timestamp = addSeconds(addMinutes(addHours(addDays(now, days), hours), minutes), seconds);
+            }
         }
 
         const location = type === SelectionOptions.Stopwatch ? "/stopwatch/" : "/timer/";

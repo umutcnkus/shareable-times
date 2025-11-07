@@ -22,36 +22,16 @@
 
 .watch-container {
     color: var(--text-primary);
-    font-size: 5rem;
+    font-size: 6rem;
     font-family: var(--font-mono);
     font-weight: 700;
     padding: 3rem 4rem;
-    background: rgba(30, 41, 59, 0.5);
-    backdrop-filter: blur(20px);
-    border: 2px solid rgba(255, 255, 255, 0.1);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl);
+    background: white;
+    border: 3px solid #e2e8f0;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
     position: relative;
-    overflow: hidden;
-    letter-spacing: 0.1em;
-    text-shadow: 0 0 20px rgba(99, 102, 241, 0.5);
-}
-
-.watch-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
-    animation: shine 3s infinite;
-}
-
-@keyframes shine {
-    to {
-        left: 100%;
-    }
+    letter-spacing: 0.05em;
 }
 
 .control-buttons {
@@ -63,14 +43,14 @@
 
 .copy-button,
 .control-btn {
-    background: var(--gradient-primary);
+    background: var(--primary);
     color: white;
     border: none;
     padding: 1rem 2rem;
     font-size: 1.125rem;
-    font-weight: 600;
+    font-weight: 500;
     font-family: var(--font-sans);
-    border-radius: var(--radius-full);
+    border-radius: var(--radius-md);
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -78,57 +58,32 @@
     transition: var(--transition-base);
     box-shadow: var(--shadow-md);
     position: relative;
-    overflow: hidden;
-}
-
-.copy-button::before,
-.control-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-}
-
-.copy-button:hover::before,
-.control-btn:hover::before {
-    width: 300px;
-    height: 300px;
 }
 
 .copy-button:hover,
 .control-btn:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg), 0 0 20px rgba(99, 102, 241, 0.4);
+    background: var(--primary-dark);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
 }
 
 .copy-button:active,
 .control-btn:active {
-    transform: translateY(-2px);
+    transform: translateY(0);
+    box-shadow: var(--shadow-sm);
 }
 
 .copy-button i,
 .control-btn i {
     font-size: 1.5rem;
-    z-index: 1;
-}
-
-.copy-button span,
-.control-btn span {
-    z-index: 1;
 }
 
 .control-btn.pause-btn {
-    background: var(--gradient-accent);
+    background: var(--secondary);
 }
 
 .control-btn.pause-btn:hover {
-    box-shadow: var(--shadow-lg), 0 0 20px rgba(236, 72, 153, 0.4);
+    background: var(--secondary-dark);
 }
 
 .expired-message {
@@ -217,31 +172,6 @@
 }
 
 .shortcuts-hint i {
-    font-size: 1.125rem;
-}
-
-.notification-badge {
-    position: absolute;
-    bottom: 2rem;
-    right: 2rem;
-    background: rgba(34, 197, 94, 0.1);
-    backdrop-filter: blur(10px);
-    border: 2px solid rgba(34, 197, 94, 0.5);
-    color: #22c55e;
-    padding: 0.625rem 1.25rem;
-    font-size: 0.875rem;
-    font-weight: 600;
-    font-family: var(--font-sans);
-    border-radius: var(--radius-full);
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    box-shadow: var(--shadow-md);
-    z-index: 10;
-    animation: fadeInScale 0.4s ease-out;
-}
-
-.notification-badge i {
     font-size: 1.125rem;
 }
 

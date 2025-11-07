@@ -21,31 +21,29 @@
 }
 
 .date-time-input {
-    background: var(--bg-secondary);
-    border: 3px solid var(--bg-tertiary);
+    background: var(--bg-card);
+    border: 2px solid var(--bg-card);
     color: var(--text-primary);
     font-size: 2.5rem;
     font-family: var(--font-mono);
     font-weight: 700;
     border-radius: var(--radius-lg);
-    padding: 1.25rem;
+    padding: 1rem;
     margin: 0 0.5rem;
-    width: 6rem;
+    width: 5.5rem;
     text-align: center;
-    transition: var(--transition-base);
-    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
 }
 
 .date-time-input:focus {
     outline: none;
     border-color: var(--primary);
-    box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.2), var(--shadow-lg);
-    background: var(--bg-primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
 }
 
 .date-time-input:hover {
     border-color: var(--primary);
-    box-shadow: var(--shadow-lg);
 }
 
 span.date-time-input {
@@ -60,25 +58,25 @@ span.date-time-input {
 }
 
 .controls-container .option-icon {
-    font-size: 5rem;
-    color: var(--text-primary);
-    background: var(--gradient-primary);
+    font-size: 4rem;
+    color: white;
+    background: var(--primary);
     cursor: pointer;
-    transition: var(--transition-base);
-    padding: 2rem;
-    border-radius: var(--radius-xl);
-    border: 3px solid transparent;
-    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    transition: var(--transition);
+    padding: 1.5rem 2rem;
+    border-radius: var(--radius-lg);
+    border: none;
+    box-shadow: var(--shadow-md);
 }
 
 .controls-container .option-icon:hover {
-    transform: translateY(-4px) scale(1.05);
-    box-shadow: var(--shadow-xl), 0 0 60px rgba(255, 107, 53, 0.5);
-    border-color: var(--accent);
+    transform: translateY(-2px);
+    background: var(--primary-dark);
+    box-shadow: var(--shadow-lg);
 }
 
 .controls-container .option-icon:active {
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(0);
 }
 
 .label-input-container {
@@ -89,24 +87,23 @@ span.date-time-input {
 
 .label-input {
     width: 100%;
-    background: var(--bg-secondary);
-    border: 3px solid var(--bg-tertiary);
+    background: var(--bg-card);
+    border: 2px solid var(--bg-card);
     color: var(--text-primary);
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     font-family: var(--font-sans);
     font-weight: 500;
     border-radius: var(--radius-lg);
-    padding: 1.125rem 1.5rem;
+    padding: 1rem 1.5rem;
     text-align: center;
-    transition: var(--transition-base);
-    box-shadow: var(--shadow-md);
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
 }
 
 .label-input:focus {
     outline: none;
-    border-color: var(--accent);
-    box-shadow: 0 0 0 4px rgba(255, 210, 63, 0.2), var(--shadow-lg);
-    background: var(--bg-primary);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(255, 107, 53, 0.15);
 }
 
 .label-input:hover {
@@ -122,13 +119,12 @@ span.date-time-input {
     display: flex;
     align-items: center;
     justify-content: center;
-    max-width: 40rem;
-    padding: 2.5rem;
-    background: var(--bg-secondary);
-    border: 3px solid var(--bg-tertiary);
+    max-width: 36rem;
+    padding: 2rem;
+    background: var(--bg-card);
+    border: 2px solid transparent;
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl);
-    position: relative;
+    box-shadow: var(--shadow-md);
 }
 
 input::-webkit-outer-spin-button,
@@ -151,26 +147,25 @@ input[type=number] {
 }
 
 .preset-btn {
-    background: var(--bg-tertiary);
-    border: 3px solid transparent;
-    color: var(--text-primary);
-    padding: 1rem 2rem;
+    background: var(--bg-card);
+    border: 2px solid var(--bg-card);
+    color: var(--text-secondary);
+    padding: 0.875rem 1.75rem;
     border-radius: var(--radius-lg);
     cursor: pointer;
-    font-size: 1.125rem;
-    font-weight: 700;
+    font-size: 1rem;
+    font-weight: 600;
     font-family: var(--font-sans);
-    transition: var(--transition-base);
-    box-shadow: var(--shadow-md);
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    transition: var(--transition);
+    box-shadow: var(--shadow-sm);
 }
 
 .preset-btn:hover {
-    background: var(--secondary);
-    border-color: var(--secondary-light);
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg), 0 0 20px rgba(0, 78, 137, 0.4);
+    background: var(--bg-secondary);
+    border-color: var(--primary);
+    color: var(--text-primary);
+    transform: translateY(-1px);
+    box-shadow: var(--shadow-md);
 }
 
 .preset-btn:active {
@@ -178,10 +173,10 @@ input[type=number] {
 }
 
 .preset-btn.selected {
-    background: var(--gradient-primary);
-    border-color: var(--accent);
-    color: var(--text-primary);
-    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    background: var(--primary);
+    border-color: var(--primary);
+    color: white;
+    box-shadow: var(--shadow-md);
 }
 
 .error-message {

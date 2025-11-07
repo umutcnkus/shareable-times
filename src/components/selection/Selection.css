@@ -38,42 +38,24 @@
     align-items: center;
     justify-content: center;
     padding: 3rem 2rem;
-    transition: var(--transition-base);
-    width: 300px;
-    height: 300px;
-    background: var(--bg-secondary);
-    border: 3px solid var(--bg-tertiary);
+    transition: var(--transition);
+    width: 280px;
+    height: 280px;
+    background: var(--bg-card);
+    border: 2px solid transparent;
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-lg);
-    position: relative;
-    overflow: hidden;
-}
-
-.option-container::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: var(--gradient-primary);
-    opacity: 0;
-    transition: var(--transition-base);
+    box-shadow: var(--shadow-md);
 }
 
 .option-container:hover {
-    transform: translateY(-8px) scale(1.02);
-    box-shadow: var(--shadow-xl), var(--shadow-glow);
+    transform: translateY(-4px);
     border-color: var(--primary);
-}
-
-.option-container:hover::before {
-    opacity: 0.15;
+    box-shadow: var(--shadow-lg);
 }
 
 .option-container:hover > .option-icon {
     color: var(--primary);
-    transform: scale(1.15) rotate(-5deg);
+    transform: scale(1.1);
 }
 
 .option-container:hover > .option-label {
@@ -81,26 +63,19 @@
 }
 
 .option-icon {
-    color: var(--accent);
-    font-size: 6rem;
-    transition: var(--transition-base);
-    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 5rem;
+    transition: var(--transition);
     margin-bottom: 1.5rem;
-    z-index: 1;
-    filter: drop-shadow(0 4px 12px rgba(255, 210, 63, 0.4));
 }
 
 .option-label {
     color: var(--text-primary);
-    font-size: 1.75rem;
-    font-weight: 700;
-    padding: 0;
-    margin: 0;
+    font-size: 1.5rem;
+    font-weight: 600;
     text-align: center;
-    transition: var(--transition-base);
-    letter-spacing: -0.02em;
-    z-index: 1;
-    text-transform: uppercase;
+    transition: var(--transition);
+    letter-spacing: -0.01em;
 }
 
 .setter-container {

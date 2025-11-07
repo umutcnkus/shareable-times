@@ -21,18 +21,16 @@
 }
 
 .watch-container {
-    color: var(--accent);
-    font-size: 7rem;
+    color: var(--primary);
+    font-size: 6rem;
     font-family: var(--font-mono);
     font-weight: 700;
-    padding: 3rem 5rem;
-    background: var(--bg-secondary);
-    border: 4px solid var(--bg-tertiary);
+    padding: 3rem 4rem;
+    background: var(--bg-card);
+    border: 2px solid transparent;
     border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-xl), 0 0 60px rgba(255, 210, 63, 0.15);
-    position: relative;
-    letter-spacing: 0.1em;
-    text-shadow: 0 0 40px rgba(255, 210, 63, 0.3);
+    box-shadow: var(--shadow-lg);
+    letter-spacing: 0.05em;
 }
 
 .control-buttons {
@@ -44,48 +42,45 @@
 
 .copy-button,
 .control-btn {
-    background: var(--gradient-primary);
-    color: var(--text-primary);
-    border: 3px solid transparent;
-    padding: 1.25rem 2.5rem;
-    font-size: 1.125rem;
-    font-weight: 700;
+    background: var(--primary);
+    color: white;
+    border: 2px solid transparent;
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
     font-family: var(--font-sans);
     border-radius: var(--radius-lg);
     cursor: pointer;
     display: flex;
     align-items: center;
-    gap: 0.875rem;
-    transition: var(--transition-base);
-    box-shadow: var(--shadow-lg), var(--shadow-glow);
-    position: relative;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
+    gap: 0.75rem;
+    transition: var(--transition);
+    box-shadow: var(--shadow-md);
 }
 
 .copy-button:hover,
 .control-btn:hover {
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: var(--shadow-xl), 0 0 60px rgba(255, 107, 53, 0.5);
-    border-color: var(--accent);
+    transform: translateY(-2px);
+    background: var(--primary-dark);
+    box-shadow: var(--shadow-lg);
 }
 
 .copy-button:active,
 .control-btn:active {
-    transform: translateY(-1px);
+    transform: translateY(0);
 }
 
 .copy-button i,
 .control-btn i {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
 }
 
 .control-btn.pause-btn {
-    background: var(--gradient-secondary);
+    background: var(--secondary);
 }
 
 .control-btn.pause-btn:hover {
-    box-shadow: var(--shadow-xl), 0 0 60px rgba(0, 78, 137, 0.5);
+    background: var(--secondary-dark);
 }
 
 .expired-message {

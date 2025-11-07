@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './StopwatchSetter.css';
-import { subDays, subHours, subMinutes, subSeconds } from 'date-fns';
+import { subDays, subHours, subMinutes, subSeconds, addDays, addHours, addMinutes, addSeconds } from 'date-fns';
 import { useNavigate } from "react-router-dom";
 import { SelectionOptions } from '../selection/Selection';
 
@@ -50,10 +50,19 @@ function StopwatchSetter({ type }) {
 
         setErrorMessage("");
         let now = new Date();
-        let end = subSeconds(subMinutes(subHours(subDays(now, days), hours), minutes), seconds);
+        let timestamp;
+
+        if (type === SelectionOptions.Stopwatch) {
+            // For stopwatch: store the START time (past) so we can calculate elapsed
+            timestamp = subSeconds(subMinutes(subHours(subDays(now, days), hours), minutes), seconds);
+        } else {
+            // For timer: store the EXPIRY time (future) so everyone sees same countdown
+            timestamp = addSeconds(addMinutes(addHours(addDays(now, days), hours), minutes), seconds);
+        }
+
         const location = type === SelectionOptions.Stopwatch ? "/stopwatch/" : "/timer/";
         const labelParam = label ? `?label=${encodeURIComponent(label)}` : '';
-        navigateFunc(location + end.getTime() + labelParam);
+        navigateFunc(location + timestamp.getTime() + labelParam);
     }
 
     const setPresetTime = (presetMinutes: number) => {

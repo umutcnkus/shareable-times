@@ -11,7 +11,7 @@
 .selection-container {
     display: flex;
     gap: 2rem;
-    transition: var(--transition-slow);
+    transition: var(--transition);
     animation: fadeInUp 0.8s ease-out;
 }
 

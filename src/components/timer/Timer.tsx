@@ -20,11 +20,7 @@ function Timer() {
     const [notificationsEnabled, setNotificationsEnabled] = useState(false);
     const label = searchParams.get('label') || '';
 
-    const endTime = new Date(parseInt(end || '0'));
-    const now = new Date();
-    const difference =  now.getTime() - endTime.getTime();
-    const offsetTimestamp = new Date();
-    offsetTimestamp.setSeconds(offsetTimestamp.getSeconds() + difference/1000);
+    const expiryTimestamp = new Date(parseInt(end || '0'));
 
     const {
         seconds,
@@ -36,7 +32,7 @@ function Timer() {
         restart
       } = useTimer({
         autoStart: true,
-        expiryTimestamp: offsetTimestamp,
+        expiryTimestamp: expiryTimestamp,
         onExpire: () => {
           setHasExpired(true);
           playSound();
@@ -131,7 +127,7 @@ function Timer() {
         switch(e.key.toLowerCase()) {
           case ' ':
             e.preventDefault();
-            isRunning ? pause() : restart(offsetTimestamp);
+            isRunning ? pause() : restart(expiryTimestamp);
             break;
           case 'c':
             if (e.ctrlKey || e.metaKey) return;
@@ -156,7 +152,7 @@ function Timer() {
 
       window.addEventListener('keydown', handleKeyPress);
       return () => window.removeEventListener('keydown', handleKeyPress);
-    }, [isRunning, pause, restart, offsetTimestamp, copyToClipboard, toggleFullscreen]);
+    }, [isRunning, pause, restart, expiryTimestamp, copyToClipboard, toggleFullscreen]);
 
     // Fullscreen change listener
     useEffect(() => {
@@ -200,7 +196,7 @@ function Timer() {
                 <span>Pause</span>
               </button>
             ) : (
-              <button className="control-btn" onClick={() => restart(offsetTimestamp)}>
+              <button className="control-btn" onClick={() => restart(expiryTimestamp)}>
                 <i className='bx bx-play'></i>
                 <span>Resume</span>
               </button>

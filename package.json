@@ -1,26 +1,28 @@
 {
   "homepage": "http://gitname.github.io/shareable-times",
   "name": "sharable-times",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.12.0",
-    "@testing-library/react": "^11.2.7",
-    "@testing-library/user-event": "^12.8.3",
-    "@types/jest": "^26.0.23",
-    "@types/node": "^12.20.13",
-    "@types/react": "^17.0.8",
-    "@types/react-dom": "^17.0.5",
-    "boxicons": "^2.0.7",
-    "classnames": "^2.3.1",
-    "react": "^17.0.2",
-    "react-advanced-datetimerange-picker": "^1.0.14",
-    "react-dom": "^17.0.2",
-    "react-router-dom": "^5.3.0",
-    "react-scripts": "4.0.3",
-    "react-timer-hook": "^3.0.5",
-    "typescript": "^4.3.2",
-    "web-vitals": "^1.1.2"
+    "@testing-library/jest-dom": "^6.5.0",
+    "@testing-library/react": "^16.0.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.13",
+    "@types/node": "^22.7.5",
+    "@types/react": "^18.3.11",
+    "@types/react-dom": "^18.3.1",
+    "ajv": "^8.17.1",
+    "boxicons": "^2.1.4",
+    "classnames": "^2.5.1",
+    "date-fns": "^3.6.0",
+    "qrcode.react": "^4.2.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^6.26.2",
+    "react-scripts": "5.0.1",
+    "react-timer-hook": "^3.0.7",
+    "typescript": "^4.9.5",
+    "web-vitals": "^4.2.3"
   },
   "scripts": {
     "predeploy": "npm run build",
@@ -49,6 +51,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^3.2.0"
+    "gh-pages": "^6.1.1"
   }
 }
